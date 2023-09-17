@@ -5,3 +5,8 @@
 /* .nav-link{
     color:white !important;
 } */
+
+.active-nav{
+    color: white;
+    font-weight: bold;
+}
