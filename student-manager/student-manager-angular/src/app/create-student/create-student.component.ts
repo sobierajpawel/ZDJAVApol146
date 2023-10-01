@@ -15,16 +15,17 @@ export class CreateStudentComponent {
 
   }
 
-  save(name : string, email : string){
+  save(nameInput : HTMLInputElement, emailInput : HTMLInputElement){
     //alert("Imie i nazwisko:" + name +", email: " + email);
     this.isAddedProcessing = true;
 
-    this.studentService.addStudent({name, email} as Student)
+    this.studentService.addStudent({name: nameInput.value, email: emailInput.value} as Student)
     .subscribe(()=>{
       //alert('Sukces operacji!');
       this.isAddedProcessing = false;
       this.isAddedSuccessful = true;
-      name = "";
+      nameInput.value = "";
+      emailInput.value = "";
     });
 
     return false;

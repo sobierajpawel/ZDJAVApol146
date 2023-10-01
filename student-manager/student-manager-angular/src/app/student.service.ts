@@ -10,6 +10,12 @@ export class StudentService {
 
   constructor(private httpClient : HttpClient) { }
 
+  //Metoda odpowiedzialną za pobieranie studenta o określonym id z aplikacji backend
+  getStudentById(studentId : number){
+    let studentUrl = this.url + "/" + studentId;
+    return this.httpClient.get<Student>(studentUrl);
+  }
+
   //Metoda odpowiedzialną za pobieranie studentów z aplikacji backendowej
   getStudents(){
     return this.httpClient.get<Student[]>(this.url);
@@ -25,5 +31,11 @@ export class StudentService {
   //Metoda odpowiedzialna za wysyłanie żądania POST
   addStudent(student : Student){
     return this.httpClient.post<Student>(this.url, student);
+  }
+
+  //Metoda odpowiedzialna za wysłanie requesta PUT
+  updateStudent(student : Student){
+    let studentUrl = this.url + "/" + student.id;
+    return this.httpClient.put<Student>(studentUrl, student);
   }
 }

@@ -41,6 +41,9 @@ Wystąpił błąd w wyszukiwaniu danych!
             <td>{{student.name | uppercase | lowercase | uppercase}}</td>
             <td><a *ngIf="student.id > 5" href="#">{{student.email | lowercase}}</a></td>
             <td>
+                <a [routerLink]="'/detail-student/' + student.id" class="btn btn-outline-info margin-button">Szczegóły</a>
+                <a [routerLink]="'/edit-student/' + student.id" 
+                class="btn btn-outline-warning margin-button">Edycja</a>
                 <button (click)="delete(student.id)" type="button" class="btn btn-outline-danger">Usuń</button>
             </td>
         </tr>

@@ -1,0 +1,32 @@
+<ng-container *ngIf="student">
+    <h4>Edytuj studenta - {{student.name}}</h4>
+
+    <form (ngSubmit)="save()">
+        <!-- Imię i nazwisko -->
+        <div>
+            <label class="form-label">Imię i nazwisko studenta:</label>
+            <input name="studentName" [(ngModel)]="student.name" class="form-control" type="text">
+        </div>
+
+        <div>
+            <label class="form-label">Adres email:</label>
+            <input name="studentEmail" [(ngModel)]="student.email" class="form-control" type="email">
+        </div>
+
+        <div style="margin-top:15px">
+            <button 
+            [disabled]="isUpdateProcessing"
+            class="btn btn-outline-success">
+            <span *ngIf="isUpdateProcessing" 
+            class="spinner-border spinner-border-sm" 
+            aria-hidden="true"></span>
+            Zapisz</button>
+        </div>
+    </form>
+
+    <div *ngIf="isSuccessUpdate && !isUpdateProcessing" class="alert alert-success" 
+        style="margin-top:15px">
+       
+        Dokonano aktualizacji
+    </div>
+</ng-container>
